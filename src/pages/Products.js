@@ -6,10 +6,6 @@ class Products extends Component{
      super(props);
     
      this.state = {
-        fullname: "",
-        email: "",
-        phone : "",
-        message : ""
          }
     }
     
@@ -40,7 +36,7 @@ class Products extends Component{
         handlesubmit = (event) => {
             if (this.state.auditTopic && this.state.auditTopicBrokers && this.state.auditSchema && this.state.consumerProperties
                 && this.state.auditDetails && this.state.rulebookName && this.state.rulebookJobTypes && this.state.rulebookType && this.state.ruleBookDetails
-                && this.state.tenant && this.state.topic && this.state.TopicBrokers && this.state.ruleBookLogic)
+                && this.state.tenant && this.state.topic && this.state.topicBrokers && this.state.ruleBookLogic && this.state.enable)
      {
          alert ("Your form has been submitted.");
      // alert( JSON.stringify(this.state));
@@ -51,9 +47,14 @@ class Products extends Component{
         alert("One or more fields are incomplete");
     
     }
-    updateCategory = (e) => {
-        if(e.target.checked) {
-           this.setState({ enable: e.target.value})
+    updateCategory = (event) => {
+        if(event.target.checked) {
+           this.setState({ enable: event.target.value})
+        }
+    }
+    updateCategorys = (event) => {
+        if(event.target.checked) {
+           this.setState({ enableBigBen: event.target.value})
         }
     }
     render(){
@@ -112,8 +113,8 @@ class Products extends Component{
         </tr>
         <tr>
         <td><label> Enable </label></td>
-        <td><label><input  type="radio" name="enable"  value="0" defaultChecked//checked={this.props.checked === "false"}
-                onChange={this.updateCategory} />False    <input  type="radio" name="enable"  value="1" //checked={this.props.checked === "true"}
+        <td><label><input  type="radio" name="enable"  value="false" //checked={this.props.checked === "false"}
+                onChange={this.updateCategory} />False    <input  type="radio" name="enable"  value="true" //checked={this.props.checked === "true"}
                 onChange={this.updateCategory} />True</label> </td>
         </tr>
         <tr>
@@ -138,7 +139,7 @@ class Products extends Component{
         </tr>
         <tr>
         <td><label> Topic Brokers </label></td>
-        <td><input  type="text" name="topicBrokers" value= {this.state.TopicBrokers} 
+        <td><input  type="text" name="topicBrokers" value= {this.state.topicBrokers} 
                 onChange={this.handlechangeall} /> </td>
         </tr>
         <tr>
@@ -148,9 +149,9 @@ class Products extends Component{
         </tr>
         <tr>
         <td><label> Enable Big Ben </label></td>
-        <td><label><input  type="radio" name="enableBigBen"  value="false" defaultChecked//checked={this.props.checked === "false"}
-                onChange={this.updateCategory} />False    <input type="radio" name="enableBigBen"  value="true" //checked={this.props.checked === "true"}
-                onChange={this.updateCategory} />True</label> </td>
+        <td><label><input  type="radio" name="enableBigBen"  value="false" //checked={this.props.checked === "false"}
+                onChange={this.updateCategorys} />False    <input type="radio" name="enableBigBen"  value="true" //checked={this.props.checked === "true"}
+                onChange={this.updateCategorys} />True</label> </td>
         </tr>
         </tbody>
         </table>   
