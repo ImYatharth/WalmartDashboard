@@ -85,7 +85,7 @@ class Products extends Component{
                 onChange={this.handlechangeall} /> </td>
         </tr>
         <tr>
-        <td><label> Consumer Propeties </label></td>
+        <td><label> Consumer Properties </label></td>
         <td><input  type="text" name="consumerProperties"  value={this.state.consumerProperties}  
                 onChange={this.handlechangeall} /> </td>
         </tr>
