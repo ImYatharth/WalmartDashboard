@@ -1,11 +1,12 @@
 input[type=text], select, textarea{
-    width: 7cm;
+    width: 5cm;
     padding: 8px;
     border: 1px solid rgba(22, 8, 31, 0.932);
     border-radius: 4px;
     box-sizing: border-box;
     margin-left:auto;
     resize: vertical;
+    box-shadow: 2px 2px;
     
   }
   label {
@@ -22,6 +23,7 @@ input[type=submit] {
     border-radius: 4px;
     border: 2px solid #ccc;
     margin: 5px 4px;
+    margin-left: 3cm;
     cursor: pointer;  
 
 }
@@ -29,3 +31,15 @@ div{
     text-align: left;
 }
 
+.headings{
+    margin-left: 3cm;
+    font-style:italic;
+    font-size: 20px;
+}
+.yatharth{
+   column-width: 0px; 
+   border-spacing: 10px;
+}
+input{
+  margin-left: 0.8cm;
+}

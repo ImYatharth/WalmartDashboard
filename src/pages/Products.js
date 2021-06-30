@@ -60,7 +60,7 @@ class Products extends Component{
      return(
       <div>
       <br/>
-        <span>Audit Consumer</span> <br/><br/>
+        <span className="headings">Audit Consumer</span> <br/><br/>
         <form onSubmit = {this.handlesubmit} >
         <table className="yatharth">
         <tbody>
@@ -89,12 +89,12 @@ class Products extends Component{
         <td><input  type="text" name="consumerProperties"  value={this.state.consumerProperties}  
                 onChange={this.handlechangeall} /> </td>
         </tr>
-        </tbody>
-        </table>
-                <hr></hr>
-        <span>Rule Book</span> <br/><br/>
-        <table className="yatharth">
-        <tbody>
+        {/* </tbody>
+        </table> */}
+                {/* <hr></hr> */}
+        <span className="headings">Rule Book</span> <br/><br/>
+        {/* <table className="yatharth">
+        <tbody> */}
         <tr>
         <td><label> Rulebook Name </label></td>
         <td><input  type="text" name="rulebookName"  value={this.state.rulebookName}  
@@ -113,18 +113,19 @@ class Products extends Component{
         <tr>
         <td><label> Enable </label></td>
         <td><label><input  type="radio" name="enable"  value="0" defaultChecked//checked={this.props.checked === "false"}
-                onChange={this.updateCategory} />False  <input  type="radio" name="enable"  value="1" //checked={this.props.checked === "true"}
+                onChange={this.updateCategory} />False    <input  type="radio" name="enable"  value="1" //checked={this.props.checked === "true"}
                 onChange={this.updateCategory} />True</label> </td>
         </tr>
         <tr>
         <td><label> Rulebook Details </label></td>
         <td><input  type="text" name="ruleBookDetails"  value={this.state.ruleBookDetails}  
                 onChange={this.handlechangeall} /> </td>
-        </tr></tbody></table>
-        <hr/>
-        <span>Replay Service</span> <br/><br/>
-        <table>
-        <tbody>
+        </tr>
+        {/* </tbody></table> */}
+        {/* <hr/> */}
+        <span className="headings">Replay Service</span> <br/><br/>
+        {/* <table className="yatharth">
+        <tbody> */}
         <tr>
         <td><label> Tenant </label></td>
         <td><input  type="text" name="tenant"  value={this.state.tenant}  
@@ -148,7 +149,7 @@ class Products extends Component{
         <tr>
         <td><label> Enable Big Ben </label></td>
         <td><label><input  type="radio" name="enableBigBen"  value="false" defaultChecked//checked={this.props.checked === "false"}
-                onChange={this.updateCategory} />False  <input  type="radio" name="enableBigBen"  value="true" //checked={this.props.checked === "true"}
+                onChange={this.updateCategory} />False    <input type="radio" name="enableBigBen"  value="true" //checked={this.props.checked === "true"}
                 onChange={this.updateCategory} />True</label> </td>
         </tr>
         </tbody>
