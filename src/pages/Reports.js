@@ -35,8 +35,8 @@ class Reports extends Component{
     
         handlesubmit = (event) => {
             if (this.state.q1 && this.state.q2 && this.state.q3 && this.state.q4 && this.state.q5 && this.state.q6 &&
-               this.state.q7 && this.state.q8 && this.state.q9 && this.state.q10 && this.state.q11 && this.state.q12 &&
-                this.state.q13 && this.state.q14 && this.state.q15 && this.state.q16 && this.state.enable)
+               this.state.q7 && this.state.q8 && this.state.q9 && this.state.q10 && this.state.q11 
+               && this.state.q12 && this.state.q13 && this.state.q14 && this.state.q15 && this.state.q16 )
      {
          alert ("Your form has been submitted.");
      // alert( JSON.stringify(this.state));
@@ -47,15 +47,17 @@ class Reports extends Component{
         alert("One or more fields are incomplete");
     
     }
-    updateCategory = (event) => {
-        if(event.target.checked) {
-           this.setState({ enable: event.target.value})
-        }
+    updateCategory1 = (event) => {
+      this.setState({ q12: event.target.value})       
     }
-    updateCategorys = (event) => {
-        if(event.target.checked) {
-           this.setState({ enableBigBen: event.target.value})
-        }
+    updateCategory2 = (event) => {
+      this.setState({ q13: event.target.value})
+    }
+    updateCategory3 = (event) => {
+      this.setState({ q14: event.target.value})
+    }
+    updateCategory4 = (event) => {
+      this.setState({ q15: event.target.value})
     }
     render(){
      return(
@@ -130,30 +132,76 @@ class Reports extends Component{
         </tr>
         <span className="headings">Deployment Timelines</span> <br/><br/>
         <tr>
-        <td><label> Enable </label></td>
-        <td><label><input  type="radio" name="enable"  value="false" //checked={this.props.checked === "false"}
-                onChange={this.updateCategory} />False    <input  type="radio" name="enable"  value="true" //checked={this.props.checked === "true"}
-                onChange={this.updateCategory} />True</label> </td>
-        </tr>
-        <tr>
         <td><label> What is the latest this needs to be in Production? </label></td>
-        <td><input  type="text" name="q12"  value={this.state.q12}  
-                onChange={this.handlechangeall} /> </td>
+        <td><label><select value={this.state.value} name="q12" onChange={this.updateCategory1}>         
+            <option selected value="">See all options</option>
+            <option value="First Half of June">First Half of June</option>
+            <option value="Second Half of June">Second Half of June</option>
+            <option value="First Half of July">First Half of July</option>
+            <option value="Second Half of July">Second Half of July</option>
+            <option value="First Half of August">First Half of August</option>
+            <option value="Second Half of August">Second Half of August</option>
+            <option value="First Half of September">First Half of September</option>
+            <option value="Second Half of September">Second Half of September</option>
+            <option value="First Half of October">First Half of October</option>
+            <option value="Second Half of October">Second Half of October</option>
+            <option value="First Half of November">First Half of November</option>
+            <option value="Second Half of November">Second Half of November</option>
+          </select></label></td>
         </tr>
         <tr>
         <td><label> What is the latest this needs to be in Stage? </label></td>
-        <td><input  type="text" name="q13"  value={this.state.q13}  
-                onChange={this.handlechangeall} /> </td>
+        <td><label><select value={this.state.value} name="q13" onChange={this.updateCategory2}>         
+            <option selected value="">See all options</option>
+            <option value="First Half of June">First Half of June</option>
+            <option value="Second Half of June">Second Half of June</option>
+            <option value="First Half of July">First Half of July</option>
+            <option value="Second Half of July">Second Half of July</option>
+            <option value="First Half of August">First Half of August</option>
+            <option value="Second Half of August">Second Half of August</option>
+            <option value="First Half of September">First Half of September</option>
+            <option value="Second Half of September">Second Half of September</option>
+            <option value="First Half of October">First Half of October</option>
+            <option value="Second Half of October">Second Half of October</option>
+            <option value="First Half of November">First Half of November</option>
+            <option value="Second Half of November">Second Half of November</option>
+          </select></label></td>
         </tr>
         <tr>
         <td><label> When is the Integration Testing supposed to happen? </label></td>
-        <td><input  type="text" name="q14"  value={this.state.q14}  
-                onChange={this.handlechangeall} /> </td>
+        <td><label><select value={this.state.value} name="q14" onChange={this.updateCategory3}>
+            <option selected value="">See all options</option>         
+            <option value="First Half of June">First Half of June</option>
+            <option value="Second Half of June">Second Half of June</option>
+            <option value="First Half of July">First Half of July</option>
+            <option value="Second Half of July">Second Half of July</option>
+            <option value="First Half of August">First Half of August</option>
+            <option value="Second Half of August">Second Half of August</option>
+            <option value="First Half of September">First Half of September</option>
+            <option value="Second Half of September">Second Half of September</option>
+            <option value="First Half of October">First Half of October</option>
+            <option value="Second Half of October">Second Half of October</option>
+            <option value="First Half of November">First Half of November</option>
+            <option value="Second Half of November">Second Half of November</option>
+          </select></label></td>
         </tr>
         <tr>
         <td><label> Are you open to the idea of Inner Sourcing? </label></td>
-        <td><input  type="text" name="q15"  value={this.state.q15}  
-                onChange={this.handlechangeall} /> </td>
+        <td><label><select value={this.state.value} name="q15" onChange={this.updateCategory4}>         
+            <option selected value="">See all options</option>
+            <option value="First Half of June">First Half of June</option>
+            <option value="Second Half of June">Second Half of June</option>
+            <option value="First Half of July">First Half of July</option>
+            <option value="Second Half of July">Second Half of July</option>
+            <option value="First Half of August">First Half of August</option>
+            <option value="Second Half of August">Second Half of August</option>
+            <option value="First Half of September">First Half of September</option>
+            <option value="Second Half of September">Second Half of September</option>
+            <option value="First Half of October">First Half of October</option>
+            <option value="Second Half of October">Second Half of October</option>
+            <option value="First Half of November">First Half of November</option>
+            <option value="Second Half of November">Second Half of November</option>
+          </select></label></td>
         </tr>
         {/* </tbody></table> */}
         {/* <hr/> */}
