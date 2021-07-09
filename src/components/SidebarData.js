@@ -10,20 +10,20 @@ export const SidebarData = [
       cName: 'nav-text'
     },
     {
-      title: 'Reports',
+      title: 'ISO Questionnaire',
       path: '/reports',
       icon: <IoIcons.IoIosPaper />,
       cName: 'nav-text'
     },
     {
-      title: 'Products',
+      title: 'Ursa-Minor',
       path: '/products',
       icon: <FaIcons.FaCartPlus />,
       cName: 'nav-text'
     },
     {
-      title: 'Team',
-      path: '/team',
+      title: 'Users',
+      path: '/users',
       icon: <IoIcons.IoMdPeople />,
       cName: 'nav-text'
     },
