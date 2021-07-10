@@ -1,52 +1,33 @@
 import React, { Component } from 'react'
 import './Reports.css';
 class Users extends Component{
-
+    // counter= false;
     constructor(props){
      super(props);
     
      this.state = {
-         }
+        counter: false    
     }
-    
-    // handlename = (event) => {
-      
-    //   this.setState({ fullname: event.target.value })
-    // }
-    
-    // handleemail = (event) => {
-      
-    //   this.setState({ email: event.target.value })
-    // }
-    
-    // handlenumber = (event) => {
-      
-    //   this.setState({ number: event.target.value })
-    // }
-    
-    // handlemessage = (event) => {
-      
-    //   this.setState({ message: event.target.value })
-    // }
-    
+
+    }
     handlechangeall = (event) =>{
      this.setState ( { [event.target.name] :event.target.value  })
     }
     
-        handlesubmit = (event) => {
-            if (this.state.auditTopic && this.state.auditTopicBrokers && this.state.auditSchema && this.state.consumerProperties
-                && this.state.auditDetails && this.state.rulebookName && this.state.rulebookJobTypes && this.state.rulebookType && this.state.ruleBookDetails
-                && this.state.tenant && this.state.topic && this.state.topicBrokers && this.state.ruleBookLogic && this.state.enable)
-     {
-         alert ("Your form has been submitted.");
-     // alert( JSON.stringify(this.state));
-     console.log( JSON.stringify(this.state));
-     event.preventDefault();
-     }
-     else
-        alert("One or more fields are incomplete");
+    //     handlesubmit = (event) => {
+    //         if (this.state.auditTopic && this.state.auditTopicBrokers && this.state.auditSchema && this.state.consumerProperties
+    //             && this.state.auditDetails && this.state.rulebookName && this.state.rulebookJobTypes && this.state.rulebookType && this.state.ruleBookDetails
+    //             && this.state.tenant && this.state.topic && this.state.topicBrokers && this.state.ruleBookLogic && this.state.enable)
+    //  {
+    //      alert ("Your form has been submitted.");
+    //  // alert( JSON.stringify(this.state));
+    //  console.log( JSON.stringify(this.state));
+    //  event.preventDefault();
+    //  }
+    //  else
+    //     alert("One or more fields are incomplete");
     
-    }
+    // }
     updateCategory = (event) => {
         if(event.target.checked) {
            this.setState({ enable: event.target.value})
@@ -57,51 +38,43 @@ class Users extends Component{
            this.setState({ enableBigBen: event.target.value})
         }
     }
+    userx = (event) => {
+        this.setState({counter: true})
+    }
     render(){
      return(
       <div>
       <br/>
-        <span className="headings">Audit Consumer</span> <br/><br/>
+        <span className="headings">User Info</span> <br/><br/>
         <form onSubmit = {this.handlesubmit} >
         <table className="yatharth">
         <tbody>
         <tr>
-        <td><label> Audit Topic </label></td>
-        <td><input  type="text" name="auditTopic"  value={this.state.auditTopic}  
+        <td><label>User ID: </label></td>
+        <td><input  type="text" name="id"  value={this.state.id}  
                 onChange={this.handlechangeall} /> </td>
         </tr>
         <tr>
-        <td><label> Audit Topic brokers </label></td>
-        <td><input  type="text" name="auditTopicBrokers" value= {this.state.auditTopicBrokers} 
+        <td><label> Version: </label></td>
+        <td><input  type="text" name="version" value= {this.state.version} 
                 onChange={this.handlechangeall} /> </td>
          </tr>
         <tr>
-        <td><label> Audit Schema </label></td>
-        <td><input  type="text" name="auditSchema" value= {this.state.auditSchema} 
+        <td><label> Data Type: </label></td>
+        <td><input  type="text" name="dataType" value= {this.state.dataType} 
                 onChange={this.handlechangeall} /> </td>
         </tr>
-        <tr>
-        <td><label> Additional Audit Details </label></td>
-        <td><input  type="text" name="auditDetails"  value={this.state.auditDetails}  
-                onChange={this.handlechangeall} /> </td>
-        </tr>
-        <tr>
-        <td><label> Consumer Properties </label></td>
-        <td><input  type="text" name="consumerProperties"  value={this.state.consumerProperties}  
-                onChange={this.handlechangeall} /> </td>
-        </tr>
-        {/* </tbody>
-        </table> */}
-                {/* <hr></hr> */}
-        <span className="headings">Rule Book</span> <br/><br/>
-        {/* <table className="yatharth">
-        <tbody> */}
-        <tr>
-        <td><label> Rulebook Name </label></td>
-        <td><input  type="text" name="rulebookName"  value={this.state.rulebookName}  
-                onChange={this.handlechangeall} /></td>
-        </tr>
-        <tr>
+        <button onClick={()=> {
+            <tr>
+                <td><label> Rulebook Name </label></td>
+                <td><input  type="text" name="rulebookName"  value={this.state.rulebookName}  
+                 onChange={this.handlechangeall} /></td>
+            </tr>
+            console.log("pants")
+            }}>+ New User</button><br></br>
+        
+             
+        {/* <tr>
         <td><label> Rulebook Job Types    </label></td>
         <td><input  type="text" name="rulebookJobTypes" value= {this.state.rulebookJobTypes} 
                 onChange={this.handlechangeall} /> </td>
@@ -124,10 +97,10 @@ class Users extends Component{
         </tr>
         {/* </tbody></table> */}
         {/* <hr/> */}
-        <span className="headings">Replay Service</span> <br/><br/>
+        {/* <span className="headings">Replay Service</span> <br/><br/> */}
         {/* <table className="yatharth">
         <tbody> */}
-        <tr>
+        {/* <tr>
         <td><label> Tenant </label></td>
         <td><input  type="text" name="tenant"  value={this.state.tenant}  
                 onChange={this.handlechangeall} /> </td>
@@ -152,7 +125,7 @@ class Users extends Component{
         <td><label><input  type="radio" name="enableBigBen"  value="false" //checked={this.props.checked === "false"}
                 onChange={this.updateCategorys} />False    <input type="radio" name="enableBigBen"  value="true" //checked={this.props.checked === "true"}
                 onChange={this.updateCategorys} />True</label> </td>
-        </tr>
+        </tr> */} 
         </tbody>
         </table>   
         <input type="submit" value="Send" />
