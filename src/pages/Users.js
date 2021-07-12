@@ -54,12 +54,20 @@ import { v4 as uuidv4 } from 'uuid';
 //     }
 
 function Users() {
+
+        // this.state = {
+        //                 }
+        // const handlechangeall = (event) =>{this.setState ( { [event.target.name] :event.target.value  })}                                        
         const [inputFields, setInputFields] = useState([
-          { id: uuidv4(), userid: '', version: '', datatype: '' },
+          { id: uuidv4(), step_id: '', step_type: '', next_step_id: '', step_inputs:'' }
+        ]);
+        const [inputFlds, setInputFlds] = useState([
+          { workflow_id:'',workflow_version:'', workflow_dataType:'' }
         ]);
       
         const handleSubmit = (e) => {
           e.preventDefault();
+          console.log("InputFields", inputFlds);
           console.log("InputFields", inputFields);
         };
       
@@ -73,53 +81,91 @@ function Users() {
           
           setInputFields(newInputFields);
         }
+        const handleChangeInput2 = (index, event) => {
+          const values = [...inputFlds];
+          values[index][event.target.name]=event.target.value;
+          setInputFlds(values);
+        }
       
         const handleAddFields = () => {
-          setInputFields([...inputFields, { id: uuidv4(),  userid: '', version: '', datatype: '' }])
+          setInputFields([...inputFields, { id: uuidv4(), step_id: '', step_type: '', next_step_id: '',step_inputs: '' }])
         }
         return (
           <div>
             <form onSubmit={handleSubmit}>
             <table className="yatharth">
             <tbody>
+            {inputFlds.map((inputFld,index)=>(
+            <div key={index}>
+            <tr>
+                <td><label> Workflow ID: </label></td>
+                <td><input  type="text" name="workflow_id"  value={inputFld.workflow_id}  
+                    onChange={event => handleChangeInput2(index, event)} /> </td>
+            </tr>
+             {/* <tr>
+                <td><label> Workflow ID: </label></td>
+                <td><input  type="text" name="workflow_id"  value={this.state.workflow_id}  
+                    onChange={this.handlechangeall} /> </td>
+            </tr> */}
+             <tr>
+                <td><label> Workflow Version: </label></td>
+                <td><input  type="text" name="workflow_version" value= {inputFld.workflow_version} 
+                    onChange={event => handleChangeInput2(index, event)} /> </td>
+            </tr>
+            <tr>
+                <td><label> Workflow Data Type: </label></td>
+                <td><input  type="text" name="workflow_dataType" value= {inputFld.workflow_dataType} 
+                    onChange={event => handleChangeInput2(index, event)} /> </td></tr> 
+                </div>))}
+                <hr/>
               { inputFields.map(inputField => (
                 <div key={inputField.id}>
                 <tr>
-                <td><label>User ID: </label></td>
+                <td><label>Step ID: </label></td>
                 <td>
                   <input 
                     type ="text"
-                    name="userid"
+                    name="step_id"
                     variant="filled"
-                    value={inputField.userid}
+                    value={inputField.step_id}
                     onChange={event => handleChangeInput(inputField.id, event)}
                   /></td></tr>
                   <tr>
-                <td><label>Version: </label></td>
+                <td><label>Step type: </label></td>
                 <td>
                   <input 
                     type ="text"
-                    name="version"
+                    name="step_type"
                     variant="filled"
-                    value={inputField.version}
+                    value={inputField.step_type}
                     onChange={event => handleChangeInput(inputField.id, event)}
                   /></td></tr>
                   <tr>
-                <td><label>Data type: </label></td>
+                <td><label>Next Step ID: </label></td>
                 <td>
                   <input 
                     type ="text"
-                    name="datatype"
+                    name="next_step_id"
                     variant="filled"
-                    value={inputField.datatype}
+                    value={inputField.next_step_id}
+                    onChange={event => handleChangeInput(inputField.id, event)}
+                  /></td></tr>
+                    <tr>
+                <td><label>Step Inputs: </label></td>
+                <td>
+                  <input 
+                    type ="text"
+                    name="step_inputs"
+                    variant="filled"
+                    value={inputField.step_inputs}
                     onChange={event => handleChangeInput(inputField.id, event)}
                   /></td></tr>
                   <button onClick={handleAddFields} >
-                    + Add User
+                    + Add Steps
                   </button>
                 </div>
               )) }
-              <button onClick={handleSubmit} className="send">submit</button>
+              <button onClick={handleSubmit} className="send">Submit</button>
               </tbody>
               </table>
             </form>
