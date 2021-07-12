@@ -59,7 +59,7 @@ function Users() {
         //                 }
         // const handlechangeall = (event) =>{this.setState ( { [event.target.name] :event.target.value  })}                                        
         const [inputFields, setInputFields] = useState([
-          { id: uuidv4(), step_id: '', step_type: '', next_step_id: '', step_inputs:'' }
+          { step_id: '', step_type: '', next_step_id: '', step_inputs:'' }
         ]);
         const [inputFlds, setInputFlds] = useState([
           { workflow_id:'',workflow_version:'', workflow_dataType:'' }
@@ -67,19 +67,24 @@ function Users() {
       
         const handleSubmit = (e) => {
           e.preventDefault();
-          console.log("InputFields", inputFlds);
-          console.log("InputFields", inputFields);
+          console.log("Workflow data", inputFlds);
+          console.log("Step data", inputFields);
         };
       
-        const handleChangeInput = (id, event) => {
-          const newInputFields = inputFields.map(i => {
-            if(id === i.id) {
-              i[event.target.name] = event.target.value
-            }
-            return i;
-          })
+        // const handleChangeInput = (id, event) => {
+        //   const newInputFields = inputFields.map(i => {
+        //     if(id === i.id) {
+        //       i[event.target.name] = event.target.value
+        //     }
+        //     return i;
+        //   })
           
-          setInputFields(newInputFields);
+        //   setInputFields(newInputFields);
+        // }
+        const handleChangeInput1 = (index1, event) => {
+          const values = [...inputFields];
+          values[index1][event.target.name]=event.target.value;
+          setInputFields(values);
         }
         const handleChangeInput2 = (index, event) => {
           const values = [...inputFlds];
@@ -87,8 +92,11 @@ function Users() {
           setInputFlds(values);
         }
       
+        // const handleAddFields = () => {
+        //   setInputFields([...inputFields, { id: uuidv4(), step_id: '', step_type: '', next_step_id: '',step_inputs: '' }])
+        // }
         const handleAddFields = () => {
-          setInputFields([...inputFields, { id: uuidv4(), step_id: '', step_type: '', next_step_id: '',step_inputs: '' }])
+          setInputFields([...inputFields, { step_id: '', step_type: '', next_step_id: '',step_inputs: '' }])
         }
         return (
           <div>
@@ -118,8 +126,8 @@ function Users() {
                     onChange={event => handleChangeInput2(index, event)} /> </td></tr> 
                 </div>))}
                 <hr/>
-              { inputFields.map(inputField => (
-                <div key={inputField.id}>
+              { inputFields.map((inputField,index1) => (
+                <div key={index1}>
                 <tr>
                 <td><label>Step ID: </label></td>
                 <td>
@@ -128,7 +136,7 @@ function Users() {
                     name="step_id"
                     variant="filled"
                     value={inputField.step_id}
-                    onChange={event => handleChangeInput(inputField.id, event)}
+                    onChange={event => handleChangeInput1(index1, event)}
                   /></td></tr>
                   <tr>
                 <td><label>Step type: </label></td>
@@ -138,7 +146,7 @@ function Users() {
                     name="step_type"
                     variant="filled"
                     value={inputField.step_type}
-                    onChange={event => handleChangeInput(inputField.id, event)}
+                    onChange={event => handleChangeInput1(index1, event)}
                   /></td></tr>
                   <tr>
                 <td><label>Next Step ID: </label></td>
@@ -148,7 +156,7 @@ function Users() {
                     name="next_step_id"
                     variant="filled"
                     value={inputField.next_step_id}
-                    onChange={event => handleChangeInput(inputField.id, event)}
+                    onChange={event => handleChangeInput1(index1, event)}
                   /></td></tr>
                     <tr>
                 <td><label>Step Inputs: </label></td>
@@ -158,7 +166,7 @@ function Users() {
                     name="step_inputs"
                     variant="filled"
                     value={inputField.step_inputs}
-                    onChange={event => handleChangeInput(inputField.id, event)}
+                    onChange={event => handleChangeInput1(index1, event)}
                   /></td></tr>
                   <button onClick={handleAddFields} >
                     + Add Steps
